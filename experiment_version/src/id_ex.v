@@ -34,11 +34,11 @@
 
 module id_ex(
 
-	input	wire										clk,
-	input wire										rst,
+	input wire				      clk,
+	input wire					  rst,
 
 	
-	//从译码阶段传递的信息
+	//
 	input wire[`AluOpBus]         id_aluop,
 	input wire[`AluSelBus]        id_alusel,
 	input wire[`RegBus]           id_reg1,

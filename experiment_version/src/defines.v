@@ -6,8 +6,8 @@
 `define WriteDisable 1'b0				//写信号无效
 `define ReadEnable 1'b1					//读信号有效
 `define ReadDisable 1'b0				//读信号无效
-`define AluOpBus 7:0					//译码阶段的aluop_o位宽
-`define AluSelBus 2:0					//译码阶段的alusel_o位宽
+`define AluOpBus 7:0					//译码阶段的aluop_o位宽,aluop_o指的是指令要进行的运算的子类型
+`define AluSelBus 2:0					//译码阶段的alusel_o位宽,alusel_o指的是指令要进行的运算的类型
 `define InstValid 1'b0					//指令有效
 `define InstInvalid 1'b1				//指令无效
 `define Stop 1'b1						//
@@ -30,14 +30,14 @@
 `define EXE_ORI  6'b001101				//ORI指令码
 `define EXE_NOP 6'b000000				//NOP指令码
 
-//AluOp
-`define EXE_OR_OP    8'b00100101		//
+//AluOp，对应的是运算子类型，进行具体的操作，如或操作，与操作
+`define EXE_OR_OP    8'b00100101		//或操作
 `define EXE_ORI_OP  8'b01011010			//
 `define EXE_NOP_OP    8'b00000000		//
 
-//AluSel
-`define EXE_RES_LOGIC 3'b001			//
-`define EXE_RES_NOP 3'b000				//
+//AluSel,对应的是运算类型，即用来表示逻辑运算，算术运算...
+`define EXE_RES_LOGIC 3'b001			//逻辑运算
+`define EXE_RES_NOP 3'b000				//空操作
 
 //指令存储器(ROM)相关的宏定义	
 `define InstAddrBus 31:0				//ROM地址总线宽度

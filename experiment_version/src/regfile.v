@@ -1,61 +1,36 @@
-//////////////////////////////////////////////////////////////////////
-////                                                              ////
-//// Copyright (C) 2014 leishangwen@163.com                       ////
-////                                                              ////
-//// This source file may be used and distributed without         ////
-//// restriction provided that this copyright statement is not    ////
-//// removed from the file and that any derivative work contains  ////
-//// the original copyright notice and the associated disclaimer. ////
-////                                                              ////
-//// This source file is free software; you can redistribute it   ////
-//// and/or modify it under the terms of the GNU Lesser General   ////
-//// Public License as published by the Free Software Foundation; ////
-//// either version 2.1 of the License, or (at your option) any   ////
-//// later version.                                               ////
-////                                                              ////
-//// This source is distributed in the hope that it will be       ////
-//// useful, but WITHOUT ANY WARRANTY; without even the implied   ////
-//// warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR      ////
-//// PURPOSE.  See the GNU Lesser General Public License for more ////
-//// details.                                                     ////
-////                                                              ////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
 // Module:  regfile
 // File:    regfile.v
-// Author:  Lei Silei
-// E-mail:  leishangwen@163.com
-// Description: ͨ�üĴ�������32��
-// Revision: 1.0
+// Description: ID阶段要操作的所有寄存器，这里的所有的地址对应的都是寄存器的地址
 //////////////////////////////////////////////////////////////////////
 
 `include "defines.v"
 
 module regfile(
 
-	input	wire										clk,
-	input wire										rst,
+	input wire					clk,
+	input wire					rst,
 	
-	//д�˿�
-	input wire										we,
-	input wire[`RegAddrBus]				waddr,
-	input wire[`RegBus]						wdata,
+	//写端口
+	input wire					we,			//写使能信号
+	input wire[`RegAddrBus]		waddr,		//写地址
+	input wire[`RegBus]			wdata,		//写数据
 	
-	//���˿�1
-	input wire										re1,
-	input wire[`RegAddrBus]			  raddr1,
-	output reg[`RegBus]           rdata1,
+	//读端口1
+	input wire					re1,		//读使能信号
+	input wire[`RegAddrBus]		raddr1,		//读地址
+	output reg[`RegBus]         rdata1,		//读数据
 	
-	//���˿�2
-	input wire										re2,
-	input wire[`RegAddrBus]			  raddr2,
-	output reg[`RegBus]           rdata2
+	//读端口2
+	input wire					re2,
+	input wire[`RegAddrBus]		raddr2,
+	output reg[`RegBus]         rdata2
 	
 );
-
+	//这里定义了32个通用寄存器
 	reg[`RegBus]  regs[0:`RegNum-1];
 
+	//当写信号有效且写操作目的寄存器不为$0时($0的值只能为0，不能写入)，将数据写到指定位置
+	//写操作是时序逻辑电路，发生在时钟信号的上升沿
 	always @ (posedge clk) begin
 		if (rst == `RstDisable) begin
 			if((we == `WriteEnable) && (waddr != `RegNumLog2'h0)) begin
@@ -64,21 +39,23 @@ module regfile(
 		end
 	end
 	
+	//针对第一个读端口的读操作，读操作是组合逻辑电路，一旦地址发生变化，会立即给出新地址对应寄存器的值
 	always @ (*) begin
-		if(rst == `RstEnable) begin
-			  rdata1 <= `ZeroWord;
-	  end else if(raddr1 == `RegNumLog2'h0) begin
-	  		rdata1 <= `ZeroWord;
+	  if(rst == `RstEnable) begin
+		rdata1 <= `ZeroWord;
+	  end else if(raddr1 == `RegNumLog2'h0) begin	
+  		rdata1 <= `ZeroWord;			//如果读地址寄存器为0，读出的数据肯定为0
 	  end else if((raddr1 == waddr) && (we == `WriteEnable) 
 	  	            && (re1 == `ReadEnable)) begin
-	  	  rdata1 <= wdata;
+		rdata1 <= wdata;				//如果读地址和写地址相同，直接将写入的数据赋值给要读的数据
 	  end else if(re1 == `ReadEnable) begin
-	      rdata1 <= regs[raddr1];
+	    rdata1 <= regs[raddr1];			//正常的读操作
 	  end else begin
-	      rdata1 <= `ZeroWord;
+	    rdata1 <= `ZeroWord;
 	  end
 	end
 
+	//针对第而二个读端口的读操作，与第一个读端口的操作完全相同
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			  rdata2 <= `ZeroWord;

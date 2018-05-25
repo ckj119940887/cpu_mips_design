@@ -1,55 +1,28 @@
-//////////////////////////////////////////////////////////////////////
-////                                                              ////
-//// Copyright (C) 2014 leishangwen@163.com                       ////
-////                                                              ////
-//// This source file may be used and distributed without         ////
-//// restriction provided that this copyright statement is not    ////
-//// removed from the file and that any derivative work contains  ////
-//// the original copyright notice and the associated disclaimer. ////
-////                                                              ////
-//// This source file is free software; you can redistribute it   ////
-//// and/or modify it under the terms of the GNU Lesser General   ////
-//// Public License as published by the Free Software Foundation; ////
-//// either version 2.1 of the License, or (at your option) any   ////
-//// later version.                                               ////
-////                                                              ////
-//// This source is distributed in the hope that it will be       ////
-//// useful, but WITHOUT ANY WARRANTY; without even the implied   ////
-//// warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR      ////
-//// PURPOSE.  See the GNU Lesser General Public License for more ////
-//// details.                                                     ////
-////                                                              ////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
 // Module:  if_id
 // File:    if_id.v
-// Author:  Lei Silei
-// E-mail:  leishangwen@163.com
-// Description: IF/ID�׶εļĴ���
-// Revision: 1.0
+// Description: 该模块的作用是将IF阶段的指令和地址传送给ID阶段，相当于连接了IF和ID两个阶段
 //////////////////////////////////////////////////////////////////////
 
 `include "defines.v"
 
 module if_id(
 
-	input	wire										clk,
-	input wire										rst,
+	input wire					  clk,			//时钟信号
+	input wire					  rst,			//复位信号
 	
 
-	input wire[`InstAddrBus]			if_pc,
-	input wire[`InstBus]          if_inst,
-	output reg[`InstAddrBus]      id_pc,
-	output reg[`InstBus]          id_inst  
+	input wire[`InstAddrBus]	  if_pc,		//来自于IF阶段的地址
+	input wire[`InstBus]          if_inst,		//来自于IF阶段的指令
+	output reg[`InstAddrBus]      id_pc,		//对应于ID阶段的地址
+	output reg[`InstBus]          id_inst  		//对应于ID阶段的指令
 	
 );
 
 	always @ (posedge clk) begin
-		if (rst == `RstEnable) begin
-			id_pc <= `ZeroWord;
+		if (rst == `RstEnable) beginn 			//复位时pc和inst都置0
+			id_pc <= `ZeroWord;id_pci  			
 			id_inst <= `ZeroWord;
-	  end else begin
+	  end else begin							//将IF阶段的指令和地址传给ID阶段
 		  id_pc <= if_pc;
 		  id_inst <= if_inst;
 		end
