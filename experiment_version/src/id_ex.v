@@ -1,33 +1,6 @@
-//////////////////////////////////////////////////////////////////////
-////                                                              ////
-//// Copyright (C) 2014 leishangwen@163.com                       ////
-////                                                              ////
-//// This source file may be used and distributed without         ////
-//// restriction provided that this copyright statement is not    ////
-//// removed from the file and that any derivative work contains  ////
-//// the original copyright notice and the associated disclaimer. ////
-////                                                              ////
-//// This source file is free software; you can redistribute it   ////
-//// and/or modify it under the terms of the GNU Lesser General   ////
-//// Public License as published by the Free Software Foundation; ////
-//// either version 2.1 of the License, or (at your option) any   ////
-//// later version.                                               ////
-////                                                              ////
-//// This source is distributed in the hope that it will be       ////
-//// useful, but WITHOUT ANY WARRANTY; without even the implied   ////
-//// warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR      ////
-//// PURPOSE.  See the GNU Lesser General Public License for more ////
-//// details.                                                     ////
-////                                                              ////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
 // Module:  id_ex
 // File:    id_ex.v
-// Author:  Lei Silei
-// E-mail:  leishangwen@163.com
-// Description: ID/EX�׶εļĴ���
-// Revision: 1.0
+// Description: ID与EX之间的桥梁
 //////////////////////////////////////////////////////////////////////
 
 `include "defines.v"
@@ -38,15 +11,15 @@ module id_ex(
 	input wire					  rst,
 
 	
-	//
-	input wire[`AluOpBus]         id_aluop,
-	input wire[`AluSelBus]        id_alusel,
-	input wire[`RegBus]           id_reg1,
-	input wire[`RegBus]           id_reg2,
-	input wire[`RegAddrBus]       id_wd,
-	input wire                    id_wreg,	
+	//从译码阶段传来的信息
+	input wire[`AluOpBus]         id_aluop,		//运算的子类型
+	input wire[`AluSelBus]        id_alusel,	//运算类型
+	input wire[`RegBus]           id_reg1,		//译码阶段要进行运算的源操作数1
+	input wire[`RegBus]           id_reg2,		//译码阶段要进行运算的源操作数2
+	input wire[`RegAddrBus]       id_wd,		//译码阶段要写入的寄存器地址
+	input wire                    id_wreg,		//是否要写入目的寄存器
 	
-	//���ݵ�ִ�н׶ε���Ϣ
+	//传递到执行阶段的信息
 	output reg[`AluOpBus]         ex_aluop,
 	output reg[`AluSelBus]        ex_alusel,
 	output reg[`RegBus]           ex_reg1,
