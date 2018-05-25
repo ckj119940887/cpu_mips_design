@@ -19,8 +19,8 @@ module if_id(
 );
 
 	always @ (posedge clk) begin
-		if (rst == `RstEnable) beginn 			//复位时pc和inst都置0
-			id_pc <= `ZeroWord;id_pci  			
+		if (rst == `RstEnable) begin 			//复位时pc和inst都置0
+			id_pc <= `ZeroWord;  			
 			id_inst <= `ZeroWord;
 	  end else begin							//将IF阶段的指令和地址传给ID阶段
 		  id_pc <= if_pc;
