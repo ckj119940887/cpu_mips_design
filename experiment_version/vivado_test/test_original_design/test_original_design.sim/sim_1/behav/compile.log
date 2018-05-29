@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/pc_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/inst_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/test_original_design.srcs/sim_1/new/test_bench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module test_bench
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/test_original_design.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
