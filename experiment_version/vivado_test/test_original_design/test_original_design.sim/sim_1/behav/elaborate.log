@@ -6,13 +6,37 @@ Starting static elaboration
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/pc_reg.v" Line 8. Module pc_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/if_id.v" Line 8. Module if_id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/regfile.v" Line 8. Module regfile doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/id.v" Line 8. Module id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/id_ex.v" Line 8. Module id_ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/ex.v" Line 8. Module ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/ex_mem.v" Line 8. Module ex_mem doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/mem.v" Line 8. Module mem doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/inst_rom.v" Line 8. Module inst_rom doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/mem_wb.v" Line 8. Module mem_wb doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/pc_reg.v" Line 8. Module pc_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/if_id.v" Line 8. Module if_id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/regfile.v" Line 8. Module regfile doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/id.v" Line 8. Module id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/id_ex.v" Line 8. Module id_ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/ex.v" Line 8. Module ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/ex_mem.v" Line 8. Module ex_mem doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/mem.v" Line 8. Module mem doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/inst_rom.v" Line 8. Module inst_rom doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/ckj/git_dir/MIPS_design/experiment_version/vivado_test/test_original_design/src/mem_wb.v" Line 8. Module mem_wb doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_id
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.id
+Compiling module xil_defaultlib.id_ex
+Compiling module xil_defaultlib.ex
+Compiling module xil_defaultlib.ex_mem
+Compiling module xil_defaultlib.mem
 Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.mem_wb
 Compiling module xil_defaultlib.test_bench
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot test_bench_behav

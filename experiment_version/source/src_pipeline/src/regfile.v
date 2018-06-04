@@ -40,6 +40,7 @@ module regfile(
 	end
 	
 	//针对第一个读端口的读操作，读操作是组合逻辑电路，一旦地址发生变化，会立即给出新地址对应寄存器的值
+	//如果要读取的寄存器是在下一个时钟上升沿要写入的寄存器，那么就将要写入的数据直接作为结果输出
 	always @ (*) begin
 	  if(rst == `RstEnable) begin
 		rdata1 <= `ZeroWord;

@@ -24,6 +24,7 @@ module if_id(
 			id_inst <= `ZeroWord;
 	  end else begin							//将IF阶段的指令和地址传给ID阶段
 		  id_pc <= if_pc;
+		  $display("%h", if_inst);
 		  id_inst <= if_inst;
 		end
 	end
